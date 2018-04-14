@@ -1,6 +1,5 @@
 # bx
 react-native项目
-
 ###一、使用到的模块
 
 react
