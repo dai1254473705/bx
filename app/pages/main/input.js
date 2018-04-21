@@ -42,10 +42,9 @@ export default class TextInputs extends Component {
             onChangeText={(text) => {
               let subr_str = text.substr(0,4);
               this.setState({text:subr_str});
-
             }}
-            // defaultValue={this.state.text}
-          >{this.state.text}</TextInput>
+            defaultValue={this.state.text}
+          ></TextInput>
           <Text style={{padding: 10, fontSize: 42}}>
             {this.state.text}
           </Text>

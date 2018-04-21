@@ -6,19 +6,20 @@
 
 import {
   StackNavigator,
+  TabNavigator,
+  TabBarBottom
 } from 'react-navigation';
 import List from '../pages/list/index';
 import Flex from '../pages/main/flex';
 import MyInput from '../pages/main/input';
-// import MainScreen from '../pages/main/index';
-
 import MainScreen from './BidList';
 
 /*
  * 创建StackNavigator
  * StackNavigator(RouteConfigs, StackNavigatorConfig);
  */
-const App = StackNavigator({
+export default StackNavigator(
+  {
   Main: {
     // `MainScreen` is a React component that will be the main content of the screen.
     screen: MainScreen,
@@ -36,21 +37,46 @@ const App = StackNavigator({
   Profile: {
     screen: List,
     navigationOptions:{
-      title:'列表页'
+      title:'分类'
     }
   },
   Flex:{
     screen: Flex,
     navigationOptions:{
-      title:'弹性盒'
+      title:'消息'
     }
   },
   MyInput:{
     screen: MyInput,
     navigationOptions:{
-      title:'表单'
+      title:'账号'
     }
-  },
-});
+  }
+},
+{
+    navigationOptions: ({ navigation }) => ({
+      tabBarIcon: ({ focused, tintColor }) => {
+        const { routeName } = navigation.state;
+        let iconName;
+        if (routeName === 'Home') {
+          iconName = `ios-information-circle${focused ? '' : '-outline'}`;
+        } else if (routeName === 'Settings') {
+          iconName = `ios-options${focused ? '' : '-outline'}`;
+        }
+        console.log(routeName);
+        // You can return any component that you like here! We usually use an
+        // icon component from react-native-vector-icons
 
-export default App;
+      },
+    }),
+    tabBarOptions: {
+      activeTintColor: 'tomato',
+      inactiveTintColor: 'gray',
+    },
+    tabBarComponent: TabBarBottom,
+    tabBarPosition: 'bottom',
+    animationEnabled: false,
+    swipeEnabled: false,
+  }
+
+);

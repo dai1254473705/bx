@@ -65,10 +65,7 @@ const styles = StyleSheet.create({
     flexShrink:0,
     flexBasis:'33.33%',
     alignSelf:'center',
-    color: '#000',
     height:100,
-    fontWeight: 'bold',
-    fontSize: 30,
     backgroundColor:'#fefefe',
     justifyContent: 'center',
     alignItems:'center'
